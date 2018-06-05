@@ -54,10 +54,17 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    if @user.active_loans?
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: "User can't be destroyed. Return all borrowed books then try again" }
+        format.json { head :no_content }
+      end
+    else
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -69,6 +76,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :firstname, :lastname, :pictures)
+      params.require(:user).permit(:email, :firstname, :lastname, :picture)
     end
 end
