@@ -9,6 +9,8 @@
       <th>Author</th>
       <th>Summary</th>
       <th>State</th>
+      <th>Current borrower</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +22,12 @@
         <td><%= book.author %></td>
         <td><%= book.summary %></td>
         <td><%= book.state %></td>
+        <td> <% if book.current_borrower %>
+                <%= link_to user_path(book.current_borrower) do %>
+                  <%= book.current_borrower.firstname %> <%= book.current_borrower.lastname %>
+                <% end %>
+              <% end %>
+        </td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -11,4 +11,12 @@ class Book < ApplicationRecord
   def self.unavailable
     where(state: "unavailable")
   end
+
+  def available?
+    state == "available"
+  end
+
+  def current_borrower
+    loans.where(return_date: nil).first&.user
+  end
 end

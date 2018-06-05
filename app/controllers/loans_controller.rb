@@ -25,6 +25,7 @@ class LoansController < ApplicationController
   # POST /loans.json
   def create
     @loan = Loan.new(loan_params)
+    @loan.set_borrow_date
 
     respond_to do |format|
       if @loan.save

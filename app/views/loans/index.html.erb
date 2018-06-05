@@ -16,8 +16,11 @@
   <tbody>
     <% @loans.each do |loan| %>
       <tr>
-        <td><%= loan.user %></td>
-        <td><%= loan.book %></td>
+        <td> <%= link_to user_path(loan.user) do %>
+                <%= loan.user.firstname %> <%= loan.user.lastname %>
+              <% end %>
+        </td>
+        <td><%= loan.book.title %></td>
         <td><%= loan.borrow_date %></td>
         <td><%= loan.return_date %></td>
         <td><%= link_to 'Show', loan %></td>

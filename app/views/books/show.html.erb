@@ -20,5 +20,15 @@
   <%= @book.state %>
 </p>
 
+<hr/>
+
+<% unless @book.available? %>
+  <p> <strong>Current borrower :</strong>
+    <%= link_to user_path(@book.current_borrower) do %>
+      <%= @book.current_borrower.firstname %> <%= @book.current_borrower.lastname %>
+    <% end %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

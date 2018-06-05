@@ -13,22 +13,14 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :loan_user_id %>
+    <%= form.collection_select(:user_id, User.all, :id, :firstname) %>
   </div>
 
   <div class="field">
     <%= form.label :book_id %>
-    <%= form.text_field :book_id, id: :loan_book_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :borrow_date %>
-    <%= form.date_select :borrow_date, id: :loan_borrow_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :return_date %>
-    <%= form.date_select :return_date, id: :loan_return_date %>
+    <%= form.collection_select(:book_id, Book.available, :id, :title) %>
+    <br/>
+    <em> Only available books are displayed </em>
   </div>
 
   <div class="actions">
