@@ -1,6 +1,10 @@
-<h1>Editing Loan</h1>
+<h1>Returning  Book</h1>
 
-<%= render 'form', loan: @loan %>
+<%= form_with(model: @loan, local: true) do |form| %>
+<div class="actions">
+  <%= form.submit "Return" %>
+</div>
+<% end %>
 
 <%= link_to 'Show', @loan %> |
 <%= link_to 'Back', loans_path %>

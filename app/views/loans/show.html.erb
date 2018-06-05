@@ -2,12 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @loan.user %>
+  <%= @loan.user.firstname %>
 </p>
 
 <p>
   <strong>Book:</strong>
-  <%= @loan.book %>
+  <%= @loan.book.title %>
 </p>
 
 <p>
@@ -20,5 +20,4 @@
   <%= @loan.return_date %>
 </p>
 
-<%= link_to 'Edit', edit_loan_path(@loan) %> |
 <%= link_to 'Back', loans_path %>

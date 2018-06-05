@@ -25,10 +25,9 @@ class LoansController < ApplicationController
   # POST /loans.json
   def create
     @loan = Loan.new(loan_params)
-    @loan.set_borrow_date
-
     respond_to do |format|
       if @loan.save
+        @loan.borrow!
         format.html { redirect_to @loan, notice: 'Loan was successfully created.' }
         format.json { render :show, status: :created, location: @loan }
       else
@@ -41,9 +40,10 @@ class LoansController < ApplicationController
   # PATCH/PUT /loans/1
   # PATCH/PUT /loans/1.json
   def update
+    @loan.return!
     respond_to do |format|
-      if @loan.update(loan_params)
-        format.html { redirect_to @loan, notice: 'Loan was successfully updated.' }
+      if @loan.return!
+        format.html { redirect_to @loan, notice: 'Book was successfully returned' }
         format.json { render :show, status: :ok, location: @loan }
       else
         format.html { render :edit }

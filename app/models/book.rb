@@ -4,8 +4,8 @@ class Book < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :author, presence: true
 
-  scope :available?, -> { where(state: "available")}
-  scope :unavailable?, -> { where(state: "unavailable")}
+  scope :available, -> { where(state: "available")}
+  scope :unavailable, -> { where(state: "unavailable")}
   scope :search, -> (search) { where("title LIKE ?", "%#{search}%")}
 
   def available?
