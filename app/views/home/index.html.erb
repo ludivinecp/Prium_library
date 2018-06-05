@@ -1,2 +1,37 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1> Welcome to Prium Library </h1>
+</br>
+
+<h2> Books </h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Total books</th>
+      <th scope="col">Available books</th>
+      <th scope="col">Unavailable books</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @books_count %></td>
+      <td><%= @available_books_count %></td>
+      <td><%= @unavailable_books_count %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2> Users </h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Total users</th>
+      <th scope="col">Active users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @users_count %></td>
+      <td><%= @active_users_count %></td>
+    </tr>
+  </tbody>
+</table>

@@ -8,7 +8,8 @@
 book1 = Book.create(
   title: "Misery",
   author: "Stephen King",
-  summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+  summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  state: "unavailable")
 Book.create(
   title: "Il était une fois",
   author: "Ludivine Coipel",
@@ -41,6 +42,6 @@ User.create(
   firstname: "user3",
   lastname: "Lemar")
 
-book1.loans.create(borrower_id: user1.id, borrow_date: Date.today)
+book1.loans.create(user_id: user1.id, borrow_date: Date.today)
 
 
