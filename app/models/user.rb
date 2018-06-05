@@ -6,9 +6,8 @@ class User < ApplicationRecord
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   mount_uploader :picture, PictureUploader
 
-  def self.active
-    where(id: Loan.all.map(&:user).map(&:id).uniq)
-  end
+  scope :search, -> (search) { where("email LIKE ?", "%#{search}%")}
+  scope :active, -> { where(id: Loan.all.map(&:user).map(&:id).uniq)}
 
   def active_loans?
     loans.where(return_date: nil).present?
